@@ -4,6 +4,9 @@ using System.Drawing;
 using System.Windows.Forms;
 using AForge.Video;
 using AForge.Video.DirectShow;
+using System.Net.Sockets;
+using System.Text;
+using System.Net;
 
 
 namespace OtoparkOtomasyonu
@@ -14,6 +17,9 @@ namespace OtoparkOtomasyonu
         private MJPEGStream frontCameraStream, rearCameraStream;
         private FilterInfoCollection videoDevices;
         private VideoCaptureDevice videoSource;
+        
+        private TcpListener tcpListener;
+
         
         public cameraMenu()
         {
@@ -30,6 +36,12 @@ namespace OtoparkOtomasyonu
             rearCameraStream = new MJPEGStream("http://127.0.0.1:5000/video_feed");
             rearCameraStream.NewFrame += new NewFrameEventHandler(rearCameraStream_NewFrame);
             rearCameraStream.Start();
+            
+            tcpListener = new TcpListener(IPAddress.Any, 1234); // 1234 portunu kullanarak TCP sunucusunu başlatın
+            tcpListener.Start();
+            tcpListener.BeginAcceptTcpClient(OnClientConnected, null); // Bağlantı beklemek için asenkron bir işlem başlatın
+            
+            
         }
         
         private void frontCameraStream_NewFrame(object sender, NewFrameEventArgs eventArgs)
@@ -46,12 +58,7 @@ namespace OtoparkOtomasyonu
             pictureBox2.Image = frame_rear;
         }
         
-
-        private void loginInfoBack_Click(object sender, EventArgs e)
-        {
-            
-            
-        }
+        
 
         private void frontCam_button_Click(object sender, EventArgs e)
         {
@@ -75,6 +82,23 @@ namespace OtoparkOtomasyonu
             fullSizeFormRear.ShowDialog();
         }
 
+        private void OnClientConnected(IAsyncResult ar)
+        {
+            TcpClient client = tcpListener.EndAcceptTcpClient(ar);
+            NetworkStream stream = client.GetStream();
+            byte[] buffer = new byte[1024];
+            int bytesRead = stream.Read(buffer, 0, buffer.Length);
+            string message = Encoding.UTF8.GetString(buffer, 0, bytesRead);
+            //string message = Encoding.Default.GetString(buffer, 0, bytesRead);
+
+            this.Invoke(new Action(() =>
+            {
+                entered_Car.Text = message; 
+            }));
+    
+            
+            tcpListener.BeginAcceptTcpClient(OnClientConnected, null);
+        }
 
     }
 }
