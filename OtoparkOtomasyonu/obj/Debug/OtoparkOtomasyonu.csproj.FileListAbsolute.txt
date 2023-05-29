@@ -20,3 +20,4 @@ C:\Users\Emre\RiderProjects\OtoparkOtomasyonu\OtoparkOtomasyonu\obj\Debug\Otopar
 C:\Users\Emre\RiderProjects\OtoparkOtomasyonu\OtoparkOtomasyonu\obj\Debug\OtoparkOtomasyonu.mainMenu.resources
 C:\Users\Emre\RiderProjects\OtoparkOtomasyonu\OtoparkOtomasyonu\obj\Debug\OtoparkOtomasyonu.LoginInfo.resources
 C:\Users\Emre\RiderProjects\OtoparkOtomasyonu\OtoparkOtomasyonu\obj\Debug\OtoparkOtomasyonu.cameraMenu.resources
+C:\Users\Emre\RiderProjects\OtoparkOtomasyonu\OtoparkOtomasyonu\obj\Debug\OtoparkOtomasyonu.fullSizeCameraDisplay.resources
