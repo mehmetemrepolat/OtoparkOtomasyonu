@@ -32,27 +32,26 @@ namespace OtoparkOtomasyonu
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginInfo));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.car_img = new System.Windows.Forms.PictureBox();
             this.loginInfoBack = new System.Windows.Forms.Button();
             this.customerName = new System.Windows.Forms.TextBox();
             this.customerPhone = new System.Windows.Forms.TextBox();
             this.customerPlate = new System.Windows.Forms.TextBox();
             this.customerRegDate = new System.Windows.Forms.TextBox();
             this.addReg = new System.Windows.Forms.Button();
-            this.update = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
             this.userList = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.car_img)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // car_img
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(739, 228);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(421, 229);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.car_img.Location = new System.Drawing.Point(739, 228);
+            this.car_img.Name = "car_img";
+            this.car_img.Size = new System.Drawing.Size(421, 229);
+            this.car_img.TabIndex = 0;
+            this.car_img.TabStop = false;
+            this.car_img.Click += new System.EventHandler(this.car_img_Click);
             // 
             // loginInfoBack
             // 
@@ -101,23 +100,12 @@ namespace OtoparkOtomasyonu
             this.addReg.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.addReg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addReg.ForeColor = System.Drawing.Color.Transparent;
-            this.addReg.Location = new System.Drawing.Point(77, 368);
+            this.addReg.Location = new System.Drawing.Point(77, 358);
             this.addReg.Name = "addReg";
             this.addReg.Size = new System.Drawing.Size(128, 40);
             this.addReg.TabIndex = 6;
             this.addReg.UseVisualStyleBackColor = false;
-            // 
-            // update
-            // 
-            this.update.BackColor = System.Drawing.Color.Transparent;
-            this.update.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.update.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.update.ForeColor = System.Drawing.Color.Transparent;
-            this.update.Location = new System.Drawing.Point(211, 368);
-            this.update.Name = "update";
-            this.update.Size = new System.Drawing.Size(128, 40);
-            this.update.TabIndex = 7;
-            this.update.UseVisualStyleBackColor = false;
+            this.addReg.Click += new System.EventHandler(this.addReg_Click);
             // 
             // clearButton
             // 
@@ -125,12 +113,12 @@ namespace OtoparkOtomasyonu
             this.clearButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.clearButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.clearButton.ForeColor = System.Drawing.Color.Transparent;
-            this.clearButton.Location = new System.Drawing.Point(211, 439);
+            this.clearButton.Location = new System.Drawing.Point(211, 358);
             this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(114, 40);
+            this.clearButton.Size = new System.Drawing.Size(101, 40);
             this.clearButton.TabIndex = 8;
             this.clearButton.UseVisualStyleBackColor = false;
-            this.clearButton.Click += new System.EventHandler(this.button3_Click);
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // userList
             // 
@@ -138,40 +126,40 @@ namespace OtoparkOtomasyonu
             this.userList.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.userList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.userList.ForeColor = System.Drawing.Color.Transparent;
-            this.userList.Location = new System.Drawing.Point(77, 426);
+            this.userList.Location = new System.Drawing.Point(318, 358);
             this.userList.Name = "userList";
             this.userList.Size = new System.Drawing.Size(56, 40);
             this.userList.TabIndex = 9;
             this.userList.UseVisualStyleBackColor = false;
+            this.userList.Click += new System.EventHandler(this.userList_Click);
             // 
             // LoginInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1274, 685);
             this.Controls.Add(this.userList);
             this.Controls.Add(this.clearButton);
-            this.Controls.Add(this.update);
             this.Controls.Add(this.addReg);
             this.Controls.Add(this.customerRegDate);
             this.Controls.Add(this.customerPlate);
             this.Controls.Add(this.customerPhone);
             this.Controls.Add(this.customerName);
             this.Controls.Add(this.loginInfoBack);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.car_img);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Location = new System.Drawing.Point(15, 15);
             this.Name = "LoginInfo";
-            this.Text = "LoginInfo";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.car_img)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
         }
 
         private System.Windows.Forms.Button addReg;
-        private System.Windows.Forms.Button update;
         private System.Windows.Forms.Button clearButton;
         private System.Windows.Forms.Button userList;
 
@@ -183,7 +171,7 @@ namespace OtoparkOtomasyonu
 
         private System.Windows.Forms.Button loginInfoBack;
 
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox car_img;
 
         #endregion
     }

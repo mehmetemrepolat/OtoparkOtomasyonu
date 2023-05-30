@@ -23,6 +23,7 @@ namespace OtoparkOtomasyonu
         
         public cameraMenu()
         {
+            //tcpListener.Stop();
             InitializeComponent();
             loginInfoBack.FlatAppearance.BorderSize = 0; 
             loginInfoBack.FlatStyle = FlatStyle.Flat; 
@@ -37,10 +38,16 @@ namespace OtoparkOtomasyonu
             rearCameraStream.NewFrame += new NewFrameEventHandler(rearCameraStream_NewFrame);
             rearCameraStream.Start();
             
-            tcpListener = new TcpListener(IPAddress.Any, 1234); // 1234 portunu kullanarak TCP sunucusunu başlatın
-            tcpListener.Start();
-            tcpListener.BeginAcceptTcpClient(OnClientConnected, null); // Bağlantı beklemek için asenkron bir işlem başlatın
-            
+            try
+            {
+                tcpListener = new TcpListener(IPAddress.Any, 1234); // 1234 portunu kullanarak TCP sunucusunu başlatın
+                tcpListener.Start();
+                tcpListener.BeginAcceptTcpClient(OnClientConnected, null); // Bağlantı beklemek için asenkron bir işlem başlatın
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show("TCP sunucusu başlatılırken bir hata oluştu: " + ex.Message);
+            }
             
         }
         
@@ -98,6 +105,14 @@ namespace OtoparkOtomasyonu
     
             
             tcpListener.BeginAcceptTcpClient(OnClientConnected, null);
+        }
+
+        private void loginInfoBack_Click(object sender, EventArgs e)
+        {
+            
+            mainMenu mainMenuForm = new mainMenu();
+            mainMenuForm.Show();
+            this.Close();
         }
 
     }

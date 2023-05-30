@@ -54,7 +54,7 @@ namespace OtoparkOtomasyonu
             this.loginInfoBack.Size = new System.Drawing.Size(59, 40);
             this.loginInfoBack.TabIndex = 2;
             this.loginInfoBack.UseVisualStyleBackColor = false;
-            
+            this.loginInfoBack.Click += new System.EventHandler(this.loginInfoBack_Click);
             // 
             // entered_Car
             // 
@@ -62,7 +62,6 @@ namespace OtoparkOtomasyonu
             this.entered_Car.Name = "entered_Car";
             this.entered_Car.Size = new System.Drawing.Size(150, 22);
             this.entered_Car.TabIndex = 3;
-
             // 
             // textBox2
             // 

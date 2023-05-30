@@ -47,6 +47,7 @@ namespace OtoparkOtomasyonu
             // 
             this.user_LoginPass.Location = new System.Drawing.Point(245, 192);
             this.user_LoginPass.Name = "user_LoginPass";
+            this.user_LoginPass.PasswordChar = '*';
             this.user_LoginPass.Size = new System.Drawing.Size(155, 22);
             this.user_LoginPass.TabIndex = 1;
             // 
