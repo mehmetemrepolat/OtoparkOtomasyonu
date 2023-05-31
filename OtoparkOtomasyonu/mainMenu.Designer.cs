@@ -90,6 +90,7 @@ namespace OtoparkOtomasyonu
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Location = new System.Drawing.Point(15, 15);
             this.Name = "mainMenu";
+            this.Text = "Ana Menü";
             this.TransparencyKey = System.Drawing.Color.Transparent;
             this.ResumeLayout(false);
         }

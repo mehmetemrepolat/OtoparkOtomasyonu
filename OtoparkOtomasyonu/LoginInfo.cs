@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using MySql.Data.MySqlClient;
 using System.IO;
+using System.Text.RegularExpressions ;
 
 namespace OtoparkOtomasyonu
 {
@@ -39,6 +40,8 @@ namespace OtoparkOtomasyonu
             
             car_img.Click += car_img_Click;
             car_img.SizeMode = PictureBoxSizeMode.Zoom;
+            customerRegDate.Text = DateTime.Today.ToString("yyyy-MM-dd");
+
         }
 
         private void loginInfoBack_Click(object sender, EventArgs e)
@@ -58,7 +61,7 @@ namespace OtoparkOtomasyonu
         }
 
         private void car_img_Click(object sender, EventArgs e)
-        {
+        { 
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif";
             if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -66,56 +69,91 @@ namespace OtoparkOtomasyonu
                 car_img.Image = Image.FromFile(openFileDialog.FileName);
             }
         }
-
+        
         private void addReg_Click(object sender, EventArgs e)
         {
             string userName = customerName.Text;
             string userPhone = customerPhone.Text;
             string userPlate = customerPlate.Text;
             string userRegDate = customerRegDate.Text;
-
-            using (MySqlConnection connection = new MySqlConnection(connectionString))
+        
+            if (!string.IsNullOrEmpty(userName) && !string.IsNullOrEmpty(userPhone) && !string.IsNullOrEmpty(userPlate) && car_img.Image != null && !string.IsNullOrEmpty(userRegDate))
             {
-                try
+                if (IsTurkishPlate(userPlate))
                 {
-                    connection.Open();
-                    string query = "INSERT INTO customer (customer_name, customer_phone, customer_plate, customer_join_date) " +
-                                   "VALUES (@Name, @Phone, @Plate, @RegDate)";
-                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    using (MySqlConnection connection = new MySqlConnection(connectionString))
                     {
-                        command.Parameters.AddWithValue("@Name", userName);
-                        command.Parameters.AddWithValue("@Phone", userPhone);
-                        command.Parameters.AddWithValue("@Plate", userPlate);
-                        command.Parameters.AddWithValue("@RegDate", userRegDate);
-                        
-                        command.ExecuteNonQuery();
-
-                        MessageBox.Show("Kullanıcı Başarıyla Eklendi");
-                        
-                        if (car_img.Image != null)
+                        try
                         {
-                            string directoryPath = Application.StartupPath + "\\Cars";
-                            if (!Directory.Exists(directoryPath))
-                                Directory.CreateDirectory(directoryPath);
+                            connection.Open(); //Customer Car Path veritabanı ile uyumlu çalışmalı 
+                            string query = "INSERT INTO customer (customer_name, customer_phone, customer_plate, customer_join_date, customer_car_path) " +
+                                           "VALUES (@Name, @Phone, @Plate, @RegDate, @CarPath)";
+                            using (MySqlCommand command = new MySqlCommand(query, connection))
+                            {
+                                
+                                if (car_img.Image != null)
+                                {
+                                    string directoryPath = Application.StartupPath + "\\Cars";
+                                    if (!Directory.Exists(directoryPath))
+                                        Directory.CreateDirectory(directoryPath);
+                                    string imagePath = Path.Combine(directoryPath, userPlate + ".png");
+                                    car_img.Image.Save(imagePath, System.Drawing.Imaging.ImageFormat.Png);
+                                    command.Parameters.AddWithValue("@CarPath", imagePath);
 
-                            string imagePath = Path.Combine(directoryPath, userPlate + ".png");
-                            car_img.Image.Save(imagePath, System.Drawing.Imaging.ImageFormat.Png);
+                                }
+                                
+                                
+                                command.Parameters.AddWithValue("@Name", userName);
+                                command.Parameters.AddWithValue("@Phone", userPhone);
+                                command.Parameters.AddWithValue("@Plate", userPlate);
+                                command.Parameters.AddWithValue("@RegDate", userRegDate);
+                                command.ExecuteNonQuery();
+                                
+                                MessageBox.Show("Kullanıcı Başarıyla Eklendi");
+
+                                customerRegDate.Clear();
+                                customerRegDate.Text = DateTime.Today.ToString("yyyy-MM-dd");
+                                customerName.Clear();
+                                customerPhone.Clear();
+                                customerPlate.Clear();
+                                car_img.Image = null;
+                            }
                         }
-
-                        customerName.Clear();
-                        customerPhone.Clear();
-                        customerPlate.Clear();
-                        customerRegDate.Clear();
-                        car_img.Image = null;
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Hata! Kullanıcı eklenemedi: " + ex.Message);
+                        }
                     }
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show("Hata! Kullanıcı eklenemedi: " + ex.Message);
+                    MessageBox.Show("Lütfen geçerli bir Türkiye plakası girin!");
                 }
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(userName))
+                    MessageBox.Show("Lütfen müşteri adını girin!");
+                
+                else if (string.IsNullOrEmpty(userPhone))
+                    MessageBox.Show("Lütfen müşteri telefonunu girin!");
+        
+                else if (string.IsNullOrEmpty(userPlate))
+                    MessageBox.Show("Lütfen müşteri plakasını girin!");
+                
+                else if (car_img.Image == null)
+                    MessageBox.Show("Lütfen bir araba resmi seçin!");
             }
         }
 
+        
+        private bool IsTurkishPlate(string plate)
+        {
+            string pattern = @"^[0-9]{2}[A-Z]{1,3}[0-9]{1,4}$";
+            bool isMatch = Regex.IsMatch(plate, pattern);
+            return isMatch;
+        }
+        
         private void customerName_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Sadece harf girişi

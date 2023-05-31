@@ -69,6 +69,7 @@ namespace OtoparkOtomasyonu
             // customerName
             // 
             this.customerName.Location = new System.Drawing.Point(316, 204);
+            this.customerName.MaxLength = 100;
             this.customerName.Name = "customerName";
             this.customerName.Size = new System.Drawing.Size(202, 22);
             this.customerName.TabIndex = 2;
@@ -76,6 +77,7 @@ namespace OtoparkOtomasyonu
             // customerPhone
             // 
             this.customerPhone.Location = new System.Drawing.Point(316, 236);
+            this.customerPhone.MaxLength = 11;
             this.customerPhone.Name = "customerPhone";
             this.customerPhone.Size = new System.Drawing.Size(202, 22);
             this.customerPhone.TabIndex = 3;
@@ -83,6 +85,7 @@ namespace OtoparkOtomasyonu
             // customerPlate
             // 
             this.customerPlate.Location = new System.Drawing.Point(316, 268);
+            this.customerPlate.MaxLength = 15;
             this.customerPlate.Name = "customerPlate";
             this.customerPlate.Size = new System.Drawing.Size(202, 22);
             this.customerPlate.TabIndex = 4;

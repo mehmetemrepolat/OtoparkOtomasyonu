@@ -60,8 +60,7 @@ namespace OtoparkOtomasyonu
             this.ClientSize = new System.Drawing.Size(1262, 673);
             this.Controls.Add(this.panel1);
             this.Name = "fullSizeCameraDisplay";
-            this.Text = "fullSizeCameraDisplay";
-            //this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.fullSizeCameraDisplay_FormClosed);
+            this.Text = "Kamera";
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.full_sizeBox)).EndInit();
             this.ResumeLayout(false);

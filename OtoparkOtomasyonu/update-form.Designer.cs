@@ -96,7 +96,7 @@ namespace OtoparkOtomasyonu
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "update_form";
-            this.Text = "update_form";
+            this.Text = "Kullanıcı Güncelle";
             ((System.ComponentModel.ISupportInitialize)(this.car_photo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

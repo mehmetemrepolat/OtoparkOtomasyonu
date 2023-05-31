@@ -129,7 +129,7 @@ namespace OtoparkOtomasyonu
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "cameraMenu";
-            this.Text = "cameraMenu";
+            this.Text = "Kamera Menüsü";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);

@@ -63,7 +63,7 @@ namespace OtoparkOtomasyonu
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "login";
-            this.Text = "login";
+            this.Text = "Giriş";
             this.ResumeLayout(false);
             this.PerformLayout();
         }

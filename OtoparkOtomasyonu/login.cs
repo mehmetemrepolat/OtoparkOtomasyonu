@@ -22,10 +22,12 @@ namespace OtoparkOtomasyonu
                 string password_S = "1234";
                 if (username_S == userName && userPass == password_S)
                 {
-                    user_loginName.Text = "Oldu";
+                    GirisYap();
                 }
-                // Enter tuşuna basıldığında yapılacak işlemler
-                GirisYap();
+                else
+                {
+                    MessageBox.Show("Kullanıcı adı veya şifre yanlış");
+                }
             }
         }
         

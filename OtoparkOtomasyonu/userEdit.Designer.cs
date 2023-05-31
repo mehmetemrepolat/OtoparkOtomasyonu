@@ -122,7 +122,7 @@ namespace OtoparkOtomasyonu
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "userEdit";
-            this.Text = "userEdit";
+            this.Text = "Kullanıcı";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.user_view)).EndInit();
             this.ResumeLayout(false);
