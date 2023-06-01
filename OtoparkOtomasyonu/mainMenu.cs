@@ -25,6 +25,12 @@ namespace OtoparkOtomasyonu
             exit.FlatAppearance.MouseDownBackColor = Color.Transparent; 
             exit.FlatAppearance.MouseOverBackColor = Color.Transparent; 
             
+            exitButton.FlatAppearance.BorderSize = 0; 
+            exitButton.FlatStyle = FlatStyle.Flat; 
+            exitButton.FlatAppearance.MouseDownBackColor = Color.Transparent; 
+            exitButton.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -44,5 +50,11 @@ namespace OtoparkOtomasyonu
             
 
         }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        
     }
 }

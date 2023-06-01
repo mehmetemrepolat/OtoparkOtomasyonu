@@ -87,5 +87,12 @@ namespace OtoparkOtomasyonu
                 }
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            userEdit userEdit = new userEdit();
+            userEdit.Show();
+            this.Hide();
+        }
     }
 }

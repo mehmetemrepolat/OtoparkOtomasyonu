@@ -2,6 +2,8 @@
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System.IO;
+using System.Drawing;
 
 namespace OtoparkOtomasyonu
 {
@@ -127,7 +129,7 @@ namespace OtoparkOtomasyonu
                         command.Parameters.AddWithValue("@customerPlate", customerPlate);
                         command.ExecuteNonQuery();
 
-                        MessageBox.Show("Satır başarıyla silindi.");
+                        MessageBox.Show("Kayıt Silindi");
                         ShowCustomerData(); // Verilerin güncellenmesi için yeniden yükleme yapılıyor
                     }
                 }
@@ -182,6 +184,38 @@ namespace OtoparkOtomasyonu
         LoginInfo LoginInfo = new LoginInfo();
         LoginInfo.Show();
         this.Hide();
+    }
+
+    private void user_view_CellClick(object sender, DataGridViewCellEventArgs e)
+    {
+        if (e.RowIndex >= 0)
+        {
+            DataGridViewRow selectedRow = user_view.Rows[e.RowIndex];
+
+            // Seçili satırdaki verileri al
+            string customerPlate = selectedRow.Cells["Plaka"].Value.ToString();
+
+            // Dosya yolu oluşturma
+            string directoryPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Cars");
+
+            string imagePath = Path.Combine(directoryPath, customerPlate + ".png");
+
+            // Resmi çekme işlemi veya kullanma
+            if (File.Exists(imagePath))
+            {
+                
+                pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+
+                pictureBox1.Image = Image.FromFile(imagePath);
+                
+            }
+            else
+            {
+                
+
+                MessageBox.Show("Dosya bulunamadı");
+            }
+        }
     }
 }
 }

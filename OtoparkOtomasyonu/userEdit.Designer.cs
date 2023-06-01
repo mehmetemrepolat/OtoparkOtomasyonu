@@ -58,6 +58,7 @@ namespace OtoparkOtomasyonu
             this.user_view.RowTemplate.Height = 24;
             this.user_view.Size = new System.Drawing.Size(643, 326);
             this.user_view.TabIndex = 1;
+            this.user_view.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.user_view_CellClick);
             // 
             // userEditBack
             // 

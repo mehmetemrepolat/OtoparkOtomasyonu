@@ -37,6 +37,7 @@ namespace OtoparkOtomasyonu
             this.text_plate = new System.Windows.Forms.TextBox();
             this.text_phone = new System.Windows.Forms.TextBox();
             this.update = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.car_photo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,6 +82,16 @@ namespace OtoparkOtomasyonu
             this.update.UseVisualStyleBackColor = true;
             this.update.Click += new System.EventHandler(this.update_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(2, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(55, 43);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // update_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -88,6 +99,7 @@ namespace OtoparkOtomasyonu
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(639, 379);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.update);
             this.Controls.Add(this.text_phone);
             this.Controls.Add(this.text_plate);
@@ -101,6 +113,8 @@ namespace OtoparkOtomasyonu
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.Button button1;
 
         private System.Windows.Forms.Button update;
 

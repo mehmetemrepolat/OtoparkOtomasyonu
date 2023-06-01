@@ -93,14 +93,16 @@ namespace OtoparkOtomasyonu
                                 
                                 if (car_img.Image != null)
                                 {
-                                    string directoryPath = Application.StartupPath + "\\Cars";
+                                    string directoryPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Cars");
                                     if (!Directory.Exists(directoryPath))
                                         Directory.CreateDirectory(directoryPath);
+
+                                    string relativePath = Path.Combine("Cars", userPlate + ".png");
                                     string imagePath = Path.Combine(directoryPath, userPlate + ".png");
                                     car_img.Image.Save(imagePath, System.Drawing.Imaging.ImageFormat.Png);
-                                    command.Parameters.AddWithValue("@CarPath", imagePath);
-
+                                    command.Parameters.AddWithValue("@CarPath", relativePath);
                                 }
+
                                 
                                 
                                 command.Parameters.AddWithValue("@Name", userName);

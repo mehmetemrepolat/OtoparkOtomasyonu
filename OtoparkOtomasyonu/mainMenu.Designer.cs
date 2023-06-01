@@ -35,6 +35,7 @@ namespace OtoparkOtomasyonu
             this.user_signup = new System.Windows.Forms.Button();
             this.parkingSystem = new System.Windows.Forms.Button();
             this.exit = new System.Windows.Forms.Button();
+            this.exitButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // user_signup
@@ -75,6 +76,19 @@ namespace OtoparkOtomasyonu
             this.exit.TabIndex = 2;
             this.exit.UseVisualStyleBackColor = false;
             // 
+            // exitButton
+            // 
+            this.exitButton.BackColor = System.Drawing.Color.Transparent;
+            this.exitButton.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.exitButton.ForeColor = System.Drawing.Color.Silver;
+            this.exitButton.Location = new System.Drawing.Point(879, 28);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(168, 69);
+            this.exitButton.TabIndex = 3;
+            this.exitButton.UseVisualStyleBackColor = false;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+            // 
             // mainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -83,6 +97,7 @@ namespace OtoparkOtomasyonu
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1074, 685);
+            this.Controls.Add(this.exitButton);
             this.Controls.Add(this.exit);
             this.Controls.Add(this.parkingSystem);
             this.Controls.Add(this.user_signup);
@@ -94,6 +109,8 @@ namespace OtoparkOtomasyonu
             this.TransparencyKey = System.Drawing.Color.Transparent;
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Button exitButton;
 
         private System.Windows.Forms.Button parkingSystem;
         private System.Windows.Forms.Button exit;

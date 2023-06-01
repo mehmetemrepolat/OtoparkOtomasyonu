@@ -115,5 +115,10 @@ namespace OtoparkOtomasyonu
             this.Close();
         }
 
+        private void parking_history_Click(object sender, EventArgs e)
+        {
+            parkingHistory parkingHistory = new parkingHistory();
+            parkingHistory.Show();
+        }
     }
 }

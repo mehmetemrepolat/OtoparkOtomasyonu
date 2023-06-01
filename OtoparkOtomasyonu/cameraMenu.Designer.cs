@@ -39,6 +39,7 @@ namespace OtoparkOtomasyonu
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.frontCam_button = new System.Windows.Forms.Button();
             this.rearCam_button = new System.Windows.Forms.Button();
+            this.parking_history = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -112,6 +113,19 @@ namespace OtoparkOtomasyonu
             this.rearCam_button.UseVisualStyleBackColor = false;
             this.rearCam_button.Click += new System.EventHandler(this.rearCam_button_Click);
             // 
+            // parking_history
+            // 
+            this.parking_history.BackColor = System.Drawing.Color.Transparent;
+            this.parking_history.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.parking_history.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.parking_history.ForeColor = System.Drawing.Color.Transparent;
+            this.parking_history.Location = new System.Drawing.Point(1124, 1);
+            this.parking_history.Name = "parking_history";
+            this.parking_history.Size = new System.Drawing.Size(114, 66);
+            this.parking_history.TabIndex = 9;
+            this.parking_history.UseVisualStyleBackColor = false;
+            this.parking_history.Click += new System.EventHandler(this.parking_history_Click);
+            // 
             // cameraMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -119,6 +133,7 @@ namespace OtoparkOtomasyonu
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1262, 673);
+            this.Controls.Add(this.parking_history);
             this.Controls.Add(this.rearCam_button);
             this.Controls.Add(this.frontCam_button);
             this.Controls.Add(this.pictureBox2);
@@ -135,6 +150,8 @@ namespace OtoparkOtomasyonu
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.Button parking_history;
 
         private System.Windows.Forms.Button frontCam_button;
         private System.Windows.Forms.Button rearCam_button;
