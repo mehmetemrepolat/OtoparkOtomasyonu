@@ -2,7 +2,7 @@
 
 namespace OtoparkOtomasyonu
 {
-    partial class mainMenu
+    partial class MainMenu
     {
         /// <summary>
         /// Required designer variable.
@@ -31,11 +31,12 @@ namespace OtoparkOtomasyonu
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainMenu));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu));
             this.user_signup = new System.Windows.Forms.Button();
             this.parkingSystem = new System.Windows.Forms.Button();
             this.exit = new System.Windows.Forms.Button();
             this.exitButton = new System.Windows.Forms.Button();
+            this.settings = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // user_signup
@@ -89,7 +90,20 @@ namespace OtoparkOtomasyonu
             this.exitButton.UseVisualStyleBackColor = false;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
-            // mainMenu
+            // settings
+            // 
+            this.settings.BackColor = System.Drawing.Color.Transparent;
+            this.settings.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.settings.ForeColor = System.Drawing.Color.Silver;
+            this.settings.Location = new System.Drawing.Point(697, 28);
+            this.settings.Name = "settings";
+            this.settings.Size = new System.Drawing.Size(176, 69);
+            this.settings.TabIndex = 4;
+            this.settings.UseVisualStyleBackColor = false;
+            this.settings.Click += new System.EventHandler(this.settings_Click);
+            // 
+            // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -97,6 +111,7 @@ namespace OtoparkOtomasyonu
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1074, 685);
+            this.Controls.Add(this.settings);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.exit);
             this.Controls.Add(this.parkingSystem);
@@ -104,18 +119,17 @@ namespace OtoparkOtomasyonu
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Location = new System.Drawing.Point(15, 15);
-            this.Name = "mainMenu";
-            this.Text = "Ana Menü";
+            this.Name = "MainMenu";
+            this.Text = "Ana Menu";
             this.TransparencyKey = System.Drawing.Color.Transparent;
             this.ResumeLayout(false);
         }
 
-        private System.Windows.Forms.Button exitButton;
-
+        private System.Windows.Forms.Button user_signup;
         private System.Windows.Forms.Button parkingSystem;
         private System.Windows.Forms.Button exit;
-
-        private System.Windows.Forms.Button user_signup;
+        private System.Windows.Forms.Button exitButton;
+        private System.Windows.Forms.Button settings;
 
         #endregion
     }

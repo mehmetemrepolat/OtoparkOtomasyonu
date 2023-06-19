@@ -9,16 +9,21 @@ namespace OtoparkOtomasyonu
 {
     public partial class LoginInfo : Form
     {
-        private string connectionString = "server=localhost;user=root;database=otopark-otomasyonu;password=413508;";
+        //private string _connectionString = "server=localhost;user=root;database=otopark-otomasyonu;password=413508;";
+        private string _connectionString;
 
         public LoginInfo()
         {
             InitializeComponent();
-            
+            _connectionString = ReadConnectionStringFromSettings();
+
             loginInfoBack.FlatAppearance.BorderSize = 0; 
             loginInfoBack.FlatStyle = FlatStyle.Flat; 
             loginInfoBack.FlatAppearance.MouseDownBackColor = Color.Transparent;
             loginInfoBack.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            
+            customerName.ShortcutsEnabled = true;
+
             
             addReg.FlatAppearance.BorderSize = 0; 
             addReg.FlatStyle = FlatStyle.Flat; 
@@ -44,9 +49,34 @@ namespace OtoparkOtomasyonu
 
         }
 
+        private string ReadConnectionStringFromSettings()
+        {
+            string dosyaYolu = "settings.ini";
+
+            if (File.Exists(dosyaYolu))
+            {
+                string[] satirlar = File.ReadAllLines(dosyaYolu);
+
+                if (satirlar.Length >= 5)
+                {
+                    return satirlar[4];
+                }
+                else
+                {
+                    MessageBox.Show("Dosya formatı hatalı.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Dosya bulunamadı.");
+            }
+
+            return null;
+        }
+        
         private void loginInfoBack_Click(object sender, EventArgs e)
         {
-            mainMenu mainMenuForm = new mainMenu();
+            MainMenu mainMenuForm = new MainMenu();
             mainMenuForm.Show();
             this.Hide();
         }
@@ -81,7 +111,7 @@ namespace OtoparkOtomasyonu
             {
                 if (IsTurkishPlate(userPlate))
                 {
-                    using (MySqlConnection connection = new MySqlConnection(connectionString))
+                    using (MySqlConnection connection = new MySqlConnection(_connectionString))
                     {
                         try
                         {
@@ -100,6 +130,7 @@ namespace OtoparkOtomasyonu
                                     string relativePath = Path.Combine("Cars", userPlate + ".png");
                                     string imagePath = Path.Combine(directoryPath, userPlate + ".png");
                                     car_img.Image.Save(imagePath, System.Drawing.Imaging.ImageFormat.Png);
+                                    
                                     command.Parameters.AddWithValue("@CarPath", relativePath);
                                 }
 
@@ -151,7 +182,7 @@ namespace OtoparkOtomasyonu
         
         private bool IsTurkishPlate(string plate)
         {
-            string pattern = @"^[0-9]{2}[A-Z]{1,3}[0-9]{1,4}$";
+            string pattern = @"^[0-9]{2}\s[A-Z]{1,4}\s[0-9]{2,4}$";
             bool isMatch = Regex.IsMatch(plate, pattern);
             return isMatch;
         }
@@ -176,7 +207,7 @@ namespace OtoparkOtomasyonu
         
         private void userList_Click(object sender, EventArgs e)
         {
-            userEdit userEditForm = new userEdit();
+            UserEdit userEditForm = new UserEdit();
             userEditForm.Show();
             this.Hide();
         }

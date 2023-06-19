@@ -2,7 +2,7 @@
 
 namespace OtoparkOtomasyonu
 {
-    partial class userEdit
+    partial class UserEdit
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@ namespace OtoparkOtomasyonu
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(userEdit));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserEdit));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.user_view = new System.Windows.Forms.DataGridView();
             this.userEditBack = new System.Windows.Forms.Button();
@@ -107,7 +107,7 @@ namespace OtoparkOtomasyonu
             this.delete_record.UseVisualStyleBackColor = false;
             this.delete_record.Click += new System.EventHandler(this.delete_record_Click);
             // 
-            // userEdit
+            // UserEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -122,8 +122,8 @@ namespace OtoparkOtomasyonu
             this.Controls.Add(this.pictureBox1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "userEdit";
-            this.Text = "Kullanıcı";
+            this.Name = "UserEdit";
+            this.Text = "User Edit";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.user_view)).EndInit();
             this.ResumeLayout(false);

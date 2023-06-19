@@ -2,7 +2,7 @@
 
 namespace OtoparkOtomasyonu
 {
-    partial class fullSizeCameraDisplay
+    partial class FullSizeCameraDisplay
     {
         /// <summary>
         /// Required designer variable.
@@ -59,7 +59,7 @@ namespace OtoparkOtomasyonu
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1262, 673);
             this.Controls.Add(this.panel1);
-            this.Name = "fullSizeCameraDisplay";
+            this.Name = "FullSizeCameraDisplay";
             this.Text = "Kamera";
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.full_sizeBox)).EndInit();

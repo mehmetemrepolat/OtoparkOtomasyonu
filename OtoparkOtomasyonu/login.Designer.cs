@@ -2,7 +2,7 @@
 
 namespace OtoparkOtomasyonu
 {
-    partial class login
+    partial class Login
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@ namespace OtoparkOtomasyonu
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(login));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.user_loginName = new System.Windows.Forms.TextBox();
             this.user_LoginPass = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
@@ -62,7 +62,7 @@ namespace OtoparkOtomasyonu
             this.Controls.Add(this.user_loginName);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "login";
+            this.Name = "Login";
             this.Text = "Giriş";
             this.ResumeLayout(false);
             this.PerformLayout();

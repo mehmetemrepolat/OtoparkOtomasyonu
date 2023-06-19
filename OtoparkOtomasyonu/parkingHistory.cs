@@ -7,21 +7,58 @@ using System.IO;
 
 namespace OtoparkOtomasyonu
 {
-    public partial class parkingHistory : Form
+    public partial class ParkingHistory : Form
     {
-        private string connectionString = "server=localhost;user=root;database=otopark-otomasyonu;password=413508;";
-        private string carsFolderPath = "Cars/";
+        //private string _connectionString = "server=localhost;user=root;database=otopark-otomasyonu;password=413508;";
+        private string _carsFolderPath = "Cars/";
 
+        private string _connectionString;
 
-        public parkingHistory()
+        public ParkingHistory()
         {
             InitializeComponent();
+            
+            
+            
+            loginInfoBack.FlatAppearance.BorderSize = 0; 
+            loginInfoBack.FlatStyle = FlatStyle.Flat; 
+            loginInfoBack.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            loginInfoBack.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            
+            
+            
+            _connectionString = ReadConnectionStringFromSettings();
+
             ShowHistoryData();
             parking_view.SelectionChanged += Parking_view_SelectionChanged;
             
             customer_car.SizeMode = PictureBoxSizeMode.StretchImage;
 
 
+        }
+        private string ReadConnectionStringFromSettings()
+        {
+            string dosyaYolu = "settings.ini";
+
+            if (File.Exists(dosyaYolu))
+            {
+                string[] satirlar = File.ReadAllLines(dosyaYolu);
+
+                if (satirlar.Length >= 5)
+                {
+                    return satirlar[4];
+                }
+                else
+                {
+                    MessageBox.Show("Dosya formatı hatalı.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Dosya bulunamadı.");
+            }
+
+            return null;
         }
 
         private void Parking_view_SelectionChanged(object sender, EventArgs e)
@@ -31,7 +68,9 @@ namespace OtoparkOtomasyonu
                 int selectedRowIndex = parking_view.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = parking_view.Rows[selectedRowIndex];
                 string customerPlate = selectedRow.Cells["customer_plate"].Value.ToString();
-                string imagePath = Path.Combine(carsFolderPath, customerPlate + ".png");
+                
+                // Bu kısım kullanılabilir.
+                string imagePath = Path.Combine(_carsFolderPath, customerPlate + ".png");
 
                 if (File.Exists(imagePath))
                 {
@@ -50,54 +89,47 @@ namespace OtoparkOtomasyonu
         private void GetCustomerDetails(string customerPlate)
         {
              try
-            {
-                using (MySqlConnection connection = new MySqlConnection(connectionString))
-                {
-                    connection.Open();
-
-                    string query = "SELECT customer_name, customer_phone FROM customer WHERE customer_plate = @customerPlate";
-
-                    using (MySqlCommand command = new MySqlCommand(query, connection))
-                    {
-                        command.Parameters.AddWithValue("@customerPlate", customerPlate);
-
-                        using (MySqlDataReader reader = command.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                string customerName = reader["customer_name"].ToString();
-                                string customerPhone = reader["customer_phone"].ToString();
-
-                                customer_name.Text = customerName;
-                                customer_phone.Text = customerPhone;
-                            }
-                            else
-                            {
-                                // İlgili plakaya sahip müşteri bulunamadıysa, textboxları boş bırakabilirsiniz veya isteğe bağlı bir işlem yapabilirsiniz.
-                                customer_name.Text = string.Empty;
-                                customer_phone.Text = string.Empty;
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
+             {
+               using (MySqlConnection connection = new MySqlConnection(_connectionString))
+               {
+                   connection.Open();
+                   string query = "SELECT customer_name, customer_phone FROM customer WHERE customer_plate = @customerPlate";
+                   using (MySqlCommand command = new MySqlCommand(query, connection))
+                   {
+                       command.Parameters.AddWithValue("@customerPlate", customerPlate);
+                       using (MySqlDataReader reader = command.ExecuteReader())
+                       {
+                           if (reader.Read())
+                           {
+                               string customerName = reader["customer_name"].ToString();
+                               string customerPhone = reader["customer_phone"].ToString();
+                               customer_name.Text = customerName;
+                               customer_phone.Text = customerPhone;
+                           }
+                           else
+                           {
+                               customer_name.Text = string.Empty;
+                               customer_phone.Text = string.Empty;
+                           }
+                       }
+                   }
+               }
+             }
+             catch (Exception e)
+             {
+                    Console.WriteLine(e);
+                    throw;
+             }
         }
 
         private void ShowHistoryData()
         {
             try
             {
-                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                using (MySqlConnection connection = new MySqlConnection(_connectionString))
                 {
                     connection.Open();
-
-                    string query = "SELECT customer_plate, parking_date, parked_time FROM parkinghistory";
-
+                    string query = "SELECT customer_plate, parking_date, left_date FROM parkinghistory";
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
                         using (MySqlDataAdapter adapter = new MySqlDataAdapter(command))
@@ -111,14 +143,17 @@ namespace OtoparkOtomasyonu
                             parking_view.AllowUserToResizeRows = false;
                             parking_view.AllowUserToResizeColumns = false;
                             parking_view.RowHeadersVisible = false;
-                            
-              
                             customer_car.BackColor = Color.Transparent;
+
+
+                            parking_view.Columns[0].HeaderText = "Müşteri Plakası";
+                            parking_view.Columns[1].HeaderText = "Park Etme Tarihi";
+                            parking_view.Columns[2].HeaderText = "Ayrılış Tarihi";
+
 
 
                         }
                     }
-
                 }
             }
             catch (Exception e)
@@ -128,6 +163,11 @@ namespace OtoparkOtomasyonu
             }
         }
 
-
+        private void loginInfoBack_Click(object sender, EventArgs e)
+        {
+            CameraMenu cameraMenu = new CameraMenu();
+            cameraMenu.RestartTcpListeners(); // TcpListener'ları yeniden başlat
+            this.Close();
+        }
     }
 }

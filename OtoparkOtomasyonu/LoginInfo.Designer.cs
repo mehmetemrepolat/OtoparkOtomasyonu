@@ -68,6 +68,7 @@ namespace OtoparkOtomasyonu
             // 
             // customerName
             // 
+            this.customerName.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.customerName.Location = new System.Drawing.Point(316, 204);
             this.customerName.MaxLength = 100;
             this.customerName.Name = "customerName";
@@ -157,6 +158,7 @@ namespace OtoparkOtomasyonu
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Location = new System.Drawing.Point(15, 15);
             this.Name = "LoginInfo";
+            this.Text = "Kayıt";
             ((System.ComponentModel.ISupportInitialize)(this.car_img)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

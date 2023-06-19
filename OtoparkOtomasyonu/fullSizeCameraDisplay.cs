@@ -5,12 +5,12 @@ using AForge.Video.DirectShow;
 using System;
 namespace OtoparkOtomasyonu
 {
-    public partial class fullSizeCameraDisplay : Form
+    public partial class FullSizeCameraDisplay : Form
     {
 
-        private MJPEGStream cameraStream;
+        private MJPEGStream _cameraStream;
         public event EventHandler CameraFormClosed;
-        private cameraMenu parentForm; // cameraMenu formuna referans
+        private CameraMenu _parentForm; // cameraMenu formuna referans
 
         
         public Image FullSizeImage
@@ -25,20 +25,20 @@ namespace OtoparkOtomasyonu
             full_sizeBox.Image = frame;
         }
         
-        public fullSizeCameraDisplay(cameraMenu parent, string streamUrl)
+        public FullSizeCameraDisplay(CameraMenu parent, string streamUrl)
         {
             InitializeComponent();
-            parentForm = parent; // cameraMenu formuna referansı atayın
-            cameraStream = new MJPEGStream(streamUrl);
-            cameraStream.NewFrame += CameraStream_NewFrame;
-            cameraStream.Start();
+            _parentForm = parent; // cameraMenu formuna referansı atayın
+            _cameraStream = new MJPEGStream(streamUrl);
+            _cameraStream.NewFrame += CameraStream_NewFrame;
+            _cameraStream.Start();
         }
         
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);
-            cameraStream.Stop();
-            parentForm.RestartVideoStream(); // cameraMenu formundaki video yayınını yeniden başlatın
+            _cameraStream.Stop();
+            _parentForm.RestartVideoStream(); // cameraMenu formundaki video yayınını yeniden başlatın
         }
 
     }

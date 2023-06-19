@@ -5,9 +5,9 @@ using System.Drawing;
 
 namespace OtoparkOtomasyonu
 {
-    public partial class mainMenu : Form
+    public partial class MainMenu : Form
     {
-        public mainMenu()
+        public MainMenu()
         {
             InitializeComponent();
             user_signup.FlatAppearance.BorderSize = 0; 
@@ -30,23 +30,38 @@ namespace OtoparkOtomasyonu
             exitButton.FlatAppearance.MouseDownBackColor = Color.Transparent; 
             exitButton.FlatAppearance.MouseOverBackColor = Color.Transparent;
             
+            settings.FlatAppearance.BorderSize = 0; 
+            settings.FlatStyle = FlatStyle.Flat; 
+            settings.FlatAppearance.MouseDownBackColor = Color.Transparent; 
+            settings.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            
             
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             
-            LoginInfo user_addFrom = new LoginInfo();
-            user_addFrom.Show();
+            LoginInfo userAddFrom = new LoginInfo();
+            userAddFrom.Show();
             this.Hide();
         }
 
         private void parkingSystem_Click(object sender, EventArgs e)
         {
 
-            cameraMenu cameraForm = new cameraMenu();
-            cameraForm.Show();
-            this.Hide();
+            try
+            {
+                CameraMenu cameraForm = new CameraMenu();
+                cameraForm.Show();
+                
+                this.Hide();
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Sistem açılırken hata oluştu:" + ex.Message);
+            }
+
             
 
         }
@@ -54,6 +69,14 @@ namespace OtoparkOtomasyonu
         private void exitButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void settings_Click(object sender, EventArgs e)
+        {
+            settingsForm settingsForm = new settingsForm();
+            
+            settingsForm.Show();
+
         }
         
     }

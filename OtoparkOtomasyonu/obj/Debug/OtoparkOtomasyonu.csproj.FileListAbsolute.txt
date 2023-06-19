@@ -47,5 +47,6 @@ C:\Users\Emre\RiderProjects\OtoparkOtomasyonu\OtoparkOtomasyonu\bin\Debug\System
 C:\Users\Emre\RiderProjects\OtoparkOtomasyonu\OtoparkOtomasyonu\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\Emre\RiderProjects\OtoparkOtomasyonu\OtoparkOtomasyonu\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\Emre\RiderProjects\OtoparkOtomasyonu\OtoparkOtomasyonu\obj\Debug\OtoparkOtomasyonu.userEdit.resources
-C:\Users\Emre\RiderProjects\OtoparkOtomasyonu\OtoparkOtomasyonu\obj\Debug\OtoparkOtomasyonu.update_form.resources
 C:\Users\Emre\RiderProjects\OtoparkOtomasyonu\OtoparkOtomasyonu\obj\Debug\OtoparkOtomasyonu.parkingHistory.resources
+C:\Users\Emre\RiderProjects\OtoparkOtomasyonu\OtoparkOtomasyonu\obj\Debug\OtoparkOtomasyonu.UpdateForm.resources
+C:\Users\Emre\RiderProjects\OtoparkOtomasyonu\OtoparkOtomasyonu\obj\Debug\OtoparkOtomasyonu.settingsForm.resources

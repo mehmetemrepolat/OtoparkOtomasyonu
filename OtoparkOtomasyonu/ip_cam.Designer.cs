@@ -2,7 +2,7 @@
 
 namespace OtoparkOtomasyonu
 {
-    partial class ip_cam
+    partial class İpCam
     {
         /// <summary>
         /// Required designer variable.

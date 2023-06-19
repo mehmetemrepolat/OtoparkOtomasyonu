@@ -2,7 +2,7 @@
 
 namespace OtoparkOtomasyonu
 {
-    partial class parkingHistory
+    partial class ParkingHistory
     {
         /// <summary>
         /// Required designer variable.
@@ -31,11 +31,12 @@ namespace OtoparkOtomasyonu
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(parkingHistory));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ParkingHistory));
             this.parking_view = new System.Windows.Forms.DataGridView();
             this.customer_phone = new System.Windows.Forms.TextBox();
             this.customer_name = new System.Windows.Forms.TextBox();
             this.customer_car = new System.Windows.Forms.PictureBox();
+            this.loginInfoBack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.parking_view)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customer_car)).BeginInit();
             this.SuspendLayout();
@@ -72,26 +73,42 @@ namespace OtoparkOtomasyonu
             this.customer_car.TabIndex = 6;
             this.customer_car.TabStop = false;
             // 
-            // parkingHistory
+            // loginInfoBack
+            // 
+            this.loginInfoBack.BackColor = System.Drawing.Color.Transparent;
+            this.loginInfoBack.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.loginInfoBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.loginInfoBack.ForeColor = System.Drawing.Color.Transparent;
+            this.loginInfoBack.Location = new System.Drawing.Point(2, 3);
+            this.loginInfoBack.Name = "loginInfoBack";
+            this.loginInfoBack.Size = new System.Drawing.Size(59, 40);
+            this.loginInfoBack.TabIndex = 7;
+            this.loginInfoBack.UseVisualStyleBackColor = false;
+            this.loginInfoBack.Click += new System.EventHandler(this.loginInfoBack_Click);
+            // 
+            // ParkingHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1262, 673);
+            this.Controls.Add(this.loginInfoBack);
             this.Controls.Add(this.customer_car);
             this.Controls.Add(this.customer_name);
             this.Controls.Add(this.customer_phone);
             this.Controls.Add(this.parking_view);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "parkingHistory";
+            this.Name = "ParkingHistory";
             this.Text = "parkingHistory";
             ((System.ComponentModel.ISupportInitialize)(this.parking_view)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customer_car)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.Button loginInfoBack;
 
         private System.Windows.Forms.PictureBox customer_car;
 

@@ -2,7 +2,7 @@
 
 namespace OtoparkOtomasyonu
 {
-    partial class cameraMenu
+    partial class CameraMenu
     {
         /// <summary>
         /// Required designer variable.
@@ -31,15 +31,15 @@ namespace OtoparkOtomasyonu
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(cameraMenu));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CameraMenu));
             this.loginInfoBack = new System.Windows.Forms.Button();
             this.entered_Car = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.left_car = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.frontCam_button = new System.Windows.Forms.Button();
-            this.rearCam_button = new System.Windows.Forms.Button();
-            this.parking_history = new System.Windows.Forms.Button();
+            this.frontCam_button_1 = new System.Windows.Forms.Button();
+            this.rearCam_button_1 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -63,13 +63,15 @@ namespace OtoparkOtomasyonu
             this.entered_Car.Name = "entered_Car";
             this.entered_Car.Size = new System.Drawing.Size(150, 22);
             this.entered_Car.TabIndex = 3;
+            this.entered_Car.TextChanged += new System.EventHandler(this.entered_Car_TextChanged);
             // 
-            // textBox2
+            // left_car
             // 
-            this.textBox2.Location = new System.Drawing.Point(815, 612);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(150, 22);
-            this.textBox2.TabIndex = 4;
+            this.left_car.Location = new System.Drawing.Point(815, 612);
+            this.left_car.Name = "left_car";
+            this.left_car.Size = new System.Drawing.Size(150, 22);
+            this.left_car.TabIndex = 4;
+            this.left_car.TextChanged += new System.EventHandler(this.left_car_TextChanged);
             // 
             // pictureBox1
             // 
@@ -87,63 +89,65 @@ namespace OtoparkOtomasyonu
             this.pictureBox2.TabIndex = 6;
             this.pictureBox2.TabStop = false;
             // 
-            // frontCam_button
+            // frontCam_button_1
             // 
-            this.frontCam_button.BackColor = System.Drawing.Color.Transparent;
-            this.frontCam_button.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.frontCam_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.frontCam_button.ForeColor = System.Drawing.Color.Transparent;
-            this.frontCam_button.Location = new System.Drawing.Point(402, 573);
-            this.frontCam_button.Name = "frontCam_button";
-            this.frontCam_button.Size = new System.Drawing.Size(126, 88);
-            this.frontCam_button.TabIndex = 7;
-            this.frontCam_button.UseVisualStyleBackColor = false;
-            this.frontCam_button.Click += new System.EventHandler(this.frontCam_button_Click);
+            this.frontCam_button_1.BackColor = System.Drawing.Color.Transparent;
+            this.frontCam_button_1.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.frontCam_button_1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.frontCam_button_1.ForeColor = System.Drawing.Color.Transparent;
+            this.frontCam_button_1.Location = new System.Drawing.Point(400, 579);
+            this.frontCam_button_1.Name = "frontCam_button_1";
+            this.frontCam_button_1.Size = new System.Drawing.Size(136, 88);
+            this.frontCam_button_1.TabIndex = 10;
+            this.frontCam_button_1.UseVisualStyleBackColor = false;
+            this.frontCam_button_1.Click += new System.EventHandler(this.frontCam_button_1_Click_2);
             // 
-            // rearCam_button
+            // rearCam_button_1
             // 
-            this.rearCam_button.BackColor = System.Drawing.Color.Transparent;
-            this.rearCam_button.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.rearCam_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rearCam_button.ForeColor = System.Drawing.Color.Transparent;
-            this.rearCam_button.Location = new System.Drawing.Point(1051, 573);
-            this.rearCam_button.Name = "rearCam_button";
-            this.rearCam_button.Size = new System.Drawing.Size(126, 88);
-            this.rearCam_button.TabIndex = 8;
-            this.rearCam_button.UseVisualStyleBackColor = false;
-            this.rearCam_button.Click += new System.EventHandler(this.rearCam_button_Click);
+            this.rearCam_button_1.BackColor = System.Drawing.Color.Transparent;
+            this.rearCam_button_1.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.rearCam_button_1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rearCam_button_1.ForeColor = System.Drawing.Color.Transparent;
+            this.rearCam_button_1.Location = new System.Drawing.Point(1048, 573);
+            this.rearCam_button_1.Name = "rearCam_button_1";
+            this.rearCam_button_1.Size = new System.Drawing.Size(136, 88);
+            this.rearCam_button_1.TabIndex = 11;
+            this.rearCam_button_1.UseVisualStyleBackColor = false;
+            this.rearCam_button_1.Click += new System.EventHandler(this.rearCam_button_1_Click);
             // 
-            // parking_history
+            // button1
             // 
-            this.parking_history.BackColor = System.Drawing.Color.Transparent;
-            this.parking_history.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.parking_history.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.parking_history.ForeColor = System.Drawing.Color.Transparent;
-            this.parking_history.Location = new System.Drawing.Point(1124, 1);
-            this.parking_history.Name = "parking_history";
-            this.parking_history.Size = new System.Drawing.Size(114, 66);
-            this.parking_history.TabIndex = 9;
-            this.parking_history.UseVisualStyleBackColor = false;
-            this.parking_history.Click += new System.EventHandler(this.parking_history_Click);
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.Transparent;
+            this.button1.Location = new System.Drawing.Point(1119, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(119, 50);
+            this.button1.TabIndex = 12;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // cameraMenu
+            // CameraMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1262, 673);
-            this.Controls.Add(this.parking_history);
-            this.Controls.Add(this.rearCam_button);
-            this.Controls.Add(this.frontCam_button);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.rearCam_button_1);
+            this.Controls.Add(this.frontCam_button_1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.left_car);
             this.Controls.Add(this.entered_Car);
             this.Controls.Add(this.loginInfoBack);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "cameraMenu";
+            this.Location = new System.Drawing.Point(15, 15);
+            this.Name = "CameraMenu";
             this.Text = "Kamera Menüsü";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -151,13 +155,14 @@ namespace OtoparkOtomasyonu
             this.PerformLayout();
         }
 
-        private System.Windows.Forms.Button parking_history;
+        private System.Windows.Forms.Button button1;
 
-        private System.Windows.Forms.Button frontCam_button;
-        private System.Windows.Forms.Button rearCam_button;
+        private System.Windows.Forms.Button rearCam_button_1;
+
+        private System.Windows.Forms.Button frontCam_button_1;
 
         private System.Windows.Forms.TextBox entered_Car;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox left_car;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
 

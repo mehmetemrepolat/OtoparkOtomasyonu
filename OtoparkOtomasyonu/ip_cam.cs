@@ -2,9 +2,9 @@
 
 namespace OtoparkOtomasyonu
 {
-    public partial class ip_cam : Form
+    public partial class İpCam : Form
     {
-        public ip_cam()
+        public İpCam()
         {
             InitializeComponent();
         }

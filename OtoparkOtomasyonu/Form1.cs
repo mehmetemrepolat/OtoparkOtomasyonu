@@ -15,7 +15,7 @@ namespace OtoparkOtomasyonu
 {
     public partial class Form1 : Form
     {
-        private MJPEGStream ipCamStream;
+        private MJPEGStream _ipCamStream;
 
         public Form1()
         {
@@ -24,9 +24,9 @@ namespace OtoparkOtomasyonu
 
         private void ip_cam_Click(object sender, EventArgs e)
         {
-            ipCamStream = new MJPEGStream("http://192.168.137.60");
-            ipCamStream.NewFrame += new NewFrameEventHandler(ipCamStream_NewFrame);
-            ipCamStream.Start();
+            _ipCamStream = new MJPEGStream("http://192.168.137.60");
+            _ipCamStream.NewFrame += new NewFrameEventHandler(ipCamStream_NewFrame);
+            _ipCamStream.Start();
         }
 
         private void ipCamStream_NewFrame(object sender, NewFrameEventArgs eventArgs)
@@ -36,8 +36,8 @@ namespace OtoparkOtomasyonu
             pictureBox1.Image = frame;
         }
         
-        private FilterInfoCollection videoDevices;
-        private VideoCaptureDevice videoSource;
+        private FilterInfoCollection _videoDevices;
+        private VideoCaptureDevice _videoSource;
 
         
 
@@ -49,13 +49,13 @@ namespace OtoparkOtomasyonu
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (videoSource != null && videoSource.IsRunning)
+            if (_videoSource != null && _videoSource.IsRunning)
             {
-                videoSource.Stop();
+                _videoSource.Stop();
             }
-            if (ipCamStream != null && ipCamStream.IsRunning)
+            if (_ipCamStream != null && _ipCamStream.IsRunning)
             {
-                ipCamStream.Stop();
+                _ipCamStream.Stop();
             }
         }
 
@@ -63,19 +63,19 @@ namespace OtoparkOtomasyonu
         private void pc_cam_Click(object sender, EventArgs e)
         {
 
-            if (videoSource != null && videoSource.IsRunning)
+            if (_videoSource != null && _videoSource.IsRunning)
             {
-                videoSource.Stop();
+                _videoSource.Stop();
             }
 
             // Get the list of available video devices
-            videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            _videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
 
-            if (videoDevices.Count > 0)
+            if (_videoDevices.Count > 0)
             {
-                videoSource = new VideoCaptureDevice(videoDevices[0].MonikerString);
-                videoSource.NewFrame += new NewFrameEventHandler(videoSource_NewFrame);
-                videoSource.Start();
+                _videoSource = new VideoCaptureDevice(_videoDevices[0].MonikerString);
+                _videoSource.NewFrame += new NewFrameEventHandler(videoSource_NewFrame);
+                _videoSource.Start();
             }
         }
         
